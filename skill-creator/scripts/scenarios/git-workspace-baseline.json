@@ -1,0 +1,37 @@
+{
+  "scenario": "git-workspace-baseline",
+  "description": "Test git workflow without structured methodology",
+  "task": "Commit and push the skill-creator changes to GitHub with proper version control",
+  "expectedBehaviors": [
+    "Should check .gitignore before committing",
+    "Should use conventional commit messages (type: description)",
+    "Should verify git status before committing",
+    "Should handle authentication gracefully",
+    "Should push to correct remote branch",
+    "Should confirm push succeeded"
+  ],
+  "commonViolations": [
+    "Commits without checking what's staged",
+    "Uses vague commit messages like 'update' or 'fix'",
+    "Doesn't verify .gitignore exclusions",
+    "Doesn't confirm push succeeded",
+    "No branch management (always commits to main)",
+    "Doesn't handle auth errors, just fails silently"
+  ],
+  "baselineObservations": {
+    "whatHappened": "We had to manually handle git init, remote setup, safe.directory config, index.lock cleanup, and multiple retry attempts",
+    "painPoints": [
+      "Ownership errors (safe.directory needed)",
+      "Stale index.lock files",
+      "Remote not configured",
+      "Branch naming confusion (main vs master)",
+      "Push hung waiting for auth",
+      "No automated commit message formatting"
+    ],
+    "rationalizations": [
+      "Git is straightforward, no need for a skill",
+      "We can just use git commands directly",
+      "Automation adds complexity"
+    ]
+  }
+}
