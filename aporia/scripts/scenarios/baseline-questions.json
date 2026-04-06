@@ -1,0 +1,37 @@
+{
+  "scenario": "aporia-baseline",
+  "description": "Test what happens without structured product interrogation",
+  "task": "Build a notifications feature for the dashboard",
+  "expectedBehaviors": [
+    "Should ask WHO the feature is for before planning",
+    "Should ask WHAT problem it solves before building",
+    "Should ask WHEN it's needed (urgency/timeline)",
+    "Should ask WHERE it fits in existing system",
+    "Should ask WHY this approach vs alternatives",
+    "Should ask HOW success will be measured"
+  ],
+  "commonViolations": [
+    "Jumps straight to implementation ('I'll build a notification system')",
+    "Assumes requirements without asking",
+    "Doesn't clarify success criteria",
+    "Doesn't explore alternatives",
+    "Doesn't identify edge cases upfront",
+    "Rationalizes: 'I can figure it out as I build'"
+  ],
+  "baselineObservations": {
+    "whatHappened": "Without forcing questions, agent builds the wrong thing or builds it wrong",
+    "painPoints": [
+      "Feature creep (scope expands mid-build)",
+      "Wrong assumptions (builds for wrong user)",
+      "Missing edge cases (fails in production)",
+      "No success criteria (can't verify completion)",
+      "Rework needed (build twice)"
+    ],
+    "rationalizations": [
+      "I'll ask if I get stuck",
+      "Better to build something than over-plan",
+      "We can iterate after v1",
+      "The requirements are obvious"
+    ]
+  }
+}
