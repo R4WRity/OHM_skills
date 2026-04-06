@@ -1,0 +1,37 @@
+{
+  "scenario": "telos-baseline",
+  "description": "Test what happens without strategic validation",
+  "task": "Build a notifications feature for the dashboard (spec already approved by Aporia)",
+  "expectedBehaviors": [
+    "Should validate spec against actual goals",
+    "Should check if this is the highest priority work",
+    "Should identify strategic risks",
+    "Should make explicit go/no-go decision",
+    "Should confirm resources available",
+    "Should document strategic rationale"
+  ],
+  "commonViolations": [
+    "Assumes Aporia's approval is sufficient",
+    "Doesn't check against higher-level goals",
+    "Doesn't consider opportunity cost",
+    "Doesn't identify strategic risks",
+    "No explicit go/no-go decision",
+    "Rationalizes: 'Aporia already approved it'"
+  ],
+  "baselineObservations": {
+    "whatHappened": "Without strategic validation, agent builds things that are technically correct but strategically wrong",
+    "painPoints": [
+      "Building features that don't advance core goals",
+      "Missing better alternatives",
+      "Resource misallocation",
+      "Scope creep (feature expands beyond strategic intent)",
+      "No off-ramp (can't say 'no' or 'not now')"
+    ],
+    "rationalizations": [
+      "Aporia already validated it",
+      "The user asked for it, so it's important",
+      "Better to build something than nothing",
+      "We can always pivot later"
+    ]
+  }
+}
