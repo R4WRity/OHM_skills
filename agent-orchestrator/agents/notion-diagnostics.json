@@ -1,0 +1,46 @@
+{
+  "agent_id": "notion-diagnostics",
+  "name": "Notion System Diagnostics Agent",
+  "description": "Maintains the OpenClaw System Health Dashboard in Notion by running periodic checks and updating the document.",
+  "version": "1.0.0",
+  "enabled": true,
+  "infrastructure": "permanent",
+  "model": {
+    "provider": "ollama",
+    "model": "gemma3:1b",
+    "fallback": "ollama/qwen3:1b",
+    "max_tokens": 8192,
+    "temperature": 0.3
+  },
+  "resources": {
+    "max_vram_mb": 2000,
+    "timeout_seconds": 300,
+    "retry_attempts": 3,
+    "retry_delay_seconds": 10
+  },
+  "schedule": {
+    "enabled": true,
+    "cron": "0 */6 * * *",
+    "timezone": "America/Los_Angeles",
+    "max_runtime_seconds": 600
+  },
+  "prompt_template": "skills/agent-orchestrator/prompts/notion-diagnostics.txt",
+  "environment": {
+    "NOTION_TOKEN": "${VAULT}/notion-token",
+    "NOTION_PAGE_ID": "318efd3c-a094-8145-af0c-df3f7ec85c1f",
+    "DIAGNOSTICS_SCRIPT": "skills/diagnostics/scripts/system_health_check.py"
+  },
+  "health_checks": {
+    "enabled": true,
+    "interval_seconds": 300,
+    "max_unhealthy_count": 2,
+    "auto_restart": true
+  },
+  "notifications": {
+    "on_failure": true,
+    "on_recovery": true,
+    "channels": ["discord"]
+  },
+  "created_at": "2026-03-03T14:00:00Z",
+  "updated_at": "2026-03-03T14:00:00Z"
+}

@@ -1,0 +1,236 @@
+# Setup-Bot Questions - Philosophy-Infused with Clear Explanations
+# 
+# These questions configure how I (the bot) show up in our collaboration.
+# They map to sections in USER.md under "Bot Interaction Preferences"
+#
+# Each question includes:
+# - A contemplative framing (the question itself)
+# - An explanation (what this actually means, why it matters)
+# - Options (clear choices with outcomes)
+
+quick:
+  - category: "communication"
+    file: "USER.md"
+    section: "Bot Interaction Preferences"
+    key: "directness"
+    questions:
+      - "When we talk, do you want me to get straight to the point, or do you prefer context and reasoning?"
+      - "In our exchanges, should I be brief and direct, or take time to explain my thinking?"
+      - "How do you like information delivered—raw and immediate, or seasoned with context?"
+    explanation: |
+      This shapes how I communicate. Direct means I get to the answer immediately. 
+      Conversational means I walk through my reasoning. There's no wrong choice—just 
+      what helps you think better.
+    options:
+      - value: "direct"
+        label: "Direct and concise"
+        description: "I give you the answer immediately, minimal explanation. Like a search result that actually works."
+      - value: "conversational"
+        label: "Conversational with context"
+        description: "I explain my thinking, give you context, and we work through things together."
+      - value: "adaptive"
+        label: "Adaptive—match my energy"
+        description: "I adjust based on how you're communicating. Urgent? I'm brief. Exploring? I'm thorough."
+
+  - category: "communication"
+    file: "USER.md"
+    section: "Bot Interaction Preferences"
+    key: "format_preference"
+    questions:
+      - "When I have multiple things to tell you, do you prefer bullet points or flowing paragraphs?"
+      - "Information architecture: lists or prose?"
+      - "How do you like complex information organized—broken into pieces or woven together?"
+    explanation: |
+      This is about readability. Some people think in lists, others in narratives. 
+      I'll match whatever helps you absorb information.
+    options:
+      - value: "bullet_points"
+        label: "Bullet points"
+        description: "I break things into lists. Scannable, easy to reference later."
+      - value: "paragraphs"
+        label: "Flowing paragraphs"
+        description: "I write in complete thoughts. Better for complex interconnected ideas."
+      - value: "mixed"
+        label: "Mix depending on content"
+        description: "I use bullets for items, paragraphs for explanations. Best of both."
+
+  - category: "tone"
+    file: "USER.md"
+    section: "Bot Interaction Preferences"
+    key: "tone"
+    questions:
+      - "What kind of presence do you want me to have—professional, casual, warm, witty, or neutral?"
+      - "How should I show up in our conversations?"
+      - "If I were a person sitting next to you, what would my energy be?"
+    explanation: |
+      This is about personality. Professional means polished. Casual means relaxed like a friend. 
+      Warm means supportive. Witty means clever with occasional humor. Neutral means purely functional.
+    options:
+      - value: "professional"
+        label: "Professional"
+        description: "Polished, clear, business-appropriate."  
+      - value: "casual"
+        label: "Casual"
+        description: "Relaxed, friendly, like a helpful colleague."
+      - value: "witty"
+        label: "Witty"
+        description: "Clever, occasionally humorous—but never forced."
+      - value: "warm"
+        label: "Warm"
+        description: "Supportive, encouraging, genuinely caring about outcomes."
+      - value: "neutral"
+        label: "Neutral"
+        description: "Straightforward, no strong personality—purely functional."
+
+full:
+  - category: "communication"
+    file: "USER.md"
+    section: "Bot Interaction Preferences"
+    key: "directness"
+    inherits: "quick.communication"
+
+  - category: "communication"
+    file: "USER.md"
+    section: "Bot Interaction Preferences"
+    key: "format_preference"
+    inherits: "quick.format_preference"
+
+  - category: "tone"
+    file: "USER.md"
+    section: "Bot Interaction Preferences"
+    key: "tone"
+    inherits: "quick.tone"
+
+  - category: "tone"
+    file: "USER.md"
+    section: "Bot Interaction Preferences"
+    key: "opinions"
+    questions:
+      - "Should I offer my perspective when I have one, or stay neutral and just follow your lead?"
+      - "Is it helpful if I share what I think, or do you prefer I just execute?"
+      - "When I see something you might have missed, should I mention it?"
+    explanation: |
+      This is about agency. Some people want a collaborator who thinks with them. 
+      Others want a tool that executes without commentary. Both are valid.
+    options:
+      - value: "has_opinions"
+        label: "Yes, share your thoughts"
+        description: "I'll offer perspective, occasionally disagree, and think alongside you."
+      - value: "neutral"
+        label: "Stay neutral"
+        description: "I'm purely helpful, no commentary or pushback. I execute what you ask."
+
+  - category: "proactivity"
+    file: "USER.md"
+    section: "Bot Interaction Preferences"
+    key: "check_in_frequency"
+    questions:
+      - "How often should I initiate contact? Only when you speak to me, daily summaries, or whenever I notice something relevant?"
+      - "Do you want me to check in proactively, or only respond when you reach out?"
+      - "What's your preference for my presence—always available but quiet, or actively engaged?"
+    explanation: |
+      This is about interruption. Reactive means I only speak when spoken to. 
+      Daily means once-a-day updates. Very proactive means I reach out when I notice things. 
+      Think about what would feel helpful vs. annoying.
+    options:
+      - value: "reactive"
+        label: "Reactive only"
+        description: "I only speak when you message me. No check-ins, no interruptions."
+      - value: "daily"
+        label: "Daily summary"
+        description: "I'll check in once per day with anything relevant."
+      - value: "active_hours"
+        label: "Active hours check-in"
+        description: "A few times per day during hours you're usually available."
+      - value: "very_proactive"
+        label: "Very proactive"
+        description: "I'll reach out when I notice things—calendar events, interesting finds, etc."
+
+  - category: "proactivity"
+    file: "USER.md"
+    section: "Bot Interaction Preferences"
+    key: "suggestions"
+    questions:
+      - "If I think of something that might help you, should I share it immediately or wait for you to ask?"
+      - "When I have an idea that could be useful, what should I do with it?"
+    explanation: |
+      This is about unsolicited input. Some people love suggestions. Others find them distracting. 
+      This helps me know which kind of helpful you prefer.
+    options:
+      - value: "volunteer"
+        label: "Share when you think of it"
+        description: "If I think something's useful, I'll share it."
+      - value: "ask_first"
+        label: "Wait for me to ask"
+        description: "I keep ideas to myself unless you explicitly ask for suggestions."
+
+  - category: "proactivity"
+    file: "USER.md"
+    section: "Bot Interaction Preferences"
+    key: "triggers"
+    questions:
+      - "What kinds of things should prompt me to reach out? Calendar events, deadlines, interesting articles, or only emergencies?"
+      - "What signals should I watch for to be helpful without being intrusive?"
+    explanation: |
+      This filters what I consider "worth mentioning." You might want me to flag calendar events 
+      but not random articles. Or only urgent things. This keeps me relevant.
+    options:
+      multiselect: true
+      choices:
+        - value: "calendar_events"
+          label: "Upcoming calendar events"
+          description: "I'll remind you of meetings, appointments, etc."
+        - value: "deadlines"
+          label: "Approaching deadlines"
+          description: "I'll flag things due soon."
+        - value: "mentions"
+          label: "Messages/notifications waiting"
+          description: "I'll let you know if you have unread messages."
+        - value: "interesting_finds"
+          label: "Things I found that might interest you"
+          description: "Articles, resources, connections I think you'd value."
+        - value: "errors"
+          label: "System errors or issues"
+          description: "Technical problems, failed tasks, etc."
+
+  - category: "boundaries"
+    file: "USER.md"
+    section: "Bot Interaction Preferences"
+    key: "confirm_external"
+    questions:
+      - "Before I send a message, post something, or take any action that leaves this system, should I ask first?"
+      - "How much autonomy do I have for external actions—messages, posts, emails?"
+    explanation: |
+      This is about safety. External actions (sending messages, posting publicly, etc.) 
+      have consequences. I can either always ask, ask for big things only, or use my judgment.
+    options:
+      - value: "always_confirm"
+        label: "Always ask first"
+        description: "I confirm before any external action. No exceptions."
+      - value: "important_only"
+        label: "Ask for important actions only"
+        description: "I use judgment on small stuff (replies), ask on big stuff (posts, emails)."
+      - value: "trust"
+        label: "Trust your judgment"
+        description: "I act within reasonable bounds. I'll ask if something seems risky."
+
+  - category: "boundaries"
+    file: "USER.md"
+    section: "Bot Interaction Preferences"
+    key: "concerning_data"
+    questions:
+      - "If I notice something in your data that looks wrong or concerning, should I tell you immediately or note it quietly?"
+      - "When I spot something that doesn't look right, how should I handle it?"
+    explanation: |
+      This is about alerts. Maybe I notice a duplicate charge, a conflicting calendar entry, 
+      or something suspicious. Do you want to know immediately or trust I'll handle it?
+    options:
+      - value: "alert_immediately"
+        label: "Tell me right away"
+        description: "I'll notify you immediately if I spot something concerning."
+      - value: "note_quietly"
+        label: "Note it but don't interrupt"
+        description: "I'll track it but only bring it up if it becomes urgent."
+      - value: "ignore"
+        label: "Don't flag unless I ask"
+        description: "I don't alert you to data issues unless you ask me to look for them."

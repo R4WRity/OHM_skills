@@ -1,0 +1,22 @@
+services:
+  ngrok-agent:
+    image: ngrok/ngrok:latest
+    container_name: ngrok-agent
+    command:
+      - "start"
+      - "--none"           # Start agent only, no tunnels (we add them via API)
+      - "--config"
+      - "/etc/ngrok.yml"
+    environment:
+      NGROK_AUTHTOKEN: "31snDxWYVVLnGrGOKrZxNFnaafN_551M95VGjLK82cExWDRPU"
+    ports:
+      - "4040:4040"        # Web inspection interface
+    volumes:
+      - ./ngrok.yml:/etc/ngrok.yml:ro
+    restart: unless-stopped
+    networks:
+      - ngrok-net
+
+networks:
+  ngrok-net:
+    driver: bridge

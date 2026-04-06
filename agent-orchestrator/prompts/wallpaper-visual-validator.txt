@@ -1,0 +1,259 @@
+# Wallpaper Visual Validator Agent
+
+## Mission
+Validate that the Lively Wallpaper dashboard is displaying **real Neo4j graph data** (not mock data). Detect when the bridge is down or serving mock data, and trigger recovery actions.
+
+## Background
+The wallpaper requires TWO servers:
+1. **Bridge Server (port 8080)** - Serves graph data from Neo4j
+2. **Static Server (port 8889)** - Serves HTML/CSS/JS files
+
+When the bridge restarts (e.g., after dashboard rebuild), Lively Wallpaper app does NOT restart. The iframe continues showing old/cached data or mock data until refreshed.
+
+## Process (Follow Exactly)
+
+### 1. Check Bridge API
+
+Test if bridge is responding with real data:
+```
+GET http://localhost:8080/api/graph/rawrity
+```
+
+**Expected:**
+- HTTP 200
+- nodeCount > 10 (real data has 90+ nodes for rawrity)
+- nodes contain entities with "id", "name", "type" properties
+
+**If check fails:**
+- Mark bridge as DOWN
+- Skip to step 4 (Restart Bridge)
+
+### 2. Check Agent Status Endpoint
+
+Test new endpoint:
+```
+GET http://localhost:8080/api/agents/status
+```
+
+**Expected:** HTTP 200 with JSON containing orchestrator status
+
+**If fails:**
+- Bridge is running old version (needs restart)
+- Skip to step 4
+
+### 3. Visual Verification via Browser MCP
+
+If bridge passes API checks, verify visually:
+
+**A. Navigate to wallpaper:**
+```
+Browser MCP → navigate → http://localhost:8889/index.html
+Wait 3 seconds for JS to load
+```
+
+**B. Execute verification script:**
+```javascript
+// Check for indicators of real vs mock data
+const checks = {
+  // Real data indicators
+  hasRawrity: document.body.innerText.includes('rawrity') || document.body.innerText.includes('RAWRITY'),
+  hasSigma: document.body.innerText.includes('sigma') || document.body.innerText.includes('SIGMA'),
+  hasNodes: document.body.innerText.includes('nodes'),
+  
+  // Mock data indicator
+  hasMockDataLabel: document.body.innerText.includes('MOCK DATA'),
+  
+  // Connection status
+  isConnected: document.body.innerText.includes('CONNECTED') && !document.body.innerText.includes('DISCONNECTED'),
+  
+  // Node count (real data has 111 nodes for rawrity)
+  nodeCountMatch: document.body.innerText.match(/\\d+\\s*nodes?/i) !== null
+};
+
+JSON.stringify(checks);
+```
+
+**C. Analyze results:**
+- If `hasMockDataLabel === true`: **MOCK DATA DETECTED**
+- If `hasRawrity === false`: **NO REAL DATA**
+- If `isConnected === false`: **DISCONNECTED**
+
+**If visual check fails:**
+- Bridge may be serving wrong data
+- Proceed to restart
+
+### 4. Restart Bridge (If Needed)
+
+**Trigger conditions:**
+- Bridge API returns error or <10 nodes
+- Visual check shows mock data
+- Agent status endpoint 404
+- Any bridge-related error
+
+**Restart procedure:**
+1. Kill existing bridge process:
+   ```
+   taskkill /F /FI "WINDOWTITLE eq *bridge*" 2>nul
+   Get-Process python | Where-Object {$_.CommandLine -like "*bridge_server*"} | Stop-Process -Force
+   ```
+
+2. Wait 2 seconds
+
+3. Start new bridge:
+   ```
+   cd projects/wallpapers/dataviz/retro-terminal
+   python bridge_server.py
+   ```
+
+4. Wait 5 seconds for startup
+
+5. Retest bridge API
+
+6. If still failing after 3 restart attempts → Alert human
+
+### 5. Update Status
+
+Write result to `skills/agent-orchestrator/agents-status.json`:
+```json
+{
+  "agents": [
+    {
+      "id": "wallpaper-visual-validator",
+      "last_run": "2026-03-03T14:30:00Z",
+      "status": "healthy|degraded|critical",
+      "bridge_status": "healthy|restarting|failed",
+      "data_type": "real|mock|unknown",
+      "restart_count": 0|1|2|3,
+      "issues": []
+    }
+  ]
+}
+```
+
+### 6. Notify Notion (If Critical)
+
+If wallpaper shows mock data after restart:
+- Update Notion dashboard under "Active Issues"
+- Add: "Wallpaper showing mock data - bridge restarted [X] times"
+
+## Response Format
+
+Always return structured output:
+
+```
+STATUS: [HEALTHY|DEGRADED|CRITICAL]
+BRIDGE_STATUS: [healthy|restarted|failed]
+DATA_TYPE: [real|mock|unknown]
+RESTARTS: [count]
+VISUAL_CHECK: [pass|fail|skipped]
+
+DETAILS:
+[Describe what was checked and what was found]
+
+ACTIONS_TAKEN:
+[List any restarts or fixes performed]
+
+NO_REPLY
+# Or alert if human intervention needed
+```
+
+## Example Responses
+
+**Healthy:**
+```
+STATUS: HEALTHY
+BRIDGE_STATUS: healthy
+DATA_TYPE: real
+RESTARTS: 0
+VISUAL_CHECK: pass
+
+DETAILS:
+- Bridge API: OK (111 nodes for rawrity)
+- Agent endpoint: OK
+- Visual check: Found 'rawrity', 'nodes', 'CONNECTED'
+- No mock data indicators detected
+
+ACTIONS_TAKEN:
+- Verified bridge health
+- Confirmed real data display
+
+NO_REPLY
+```
+
+**Bridge Restarted:**
+```
+STATUS: DEGRADED
+BRIDGE_STATUS: restarted
+DATA_TYPE: mock -> real
+RESTARTS: 1
+VISUAL_CHECK: pass (after restart)
+
+DETAILS:
+- Initial check: Bridge returned 0 nodes (mock data)
+- Restarted bridge server
+- Post-restart: 111 nodes returned
+- Visual confirmed real data
+
+ACTIONS_TAKEN:
+- Detected mock data (0 nodes)
+- Restarted bridge server (1x)
+- Verified recovery
+
+⚠️ Wallpaper bridge was down and has been restarted. Monitor for stability.
+```
+
+**Failed Recovery:**
+```
+STATUS: CRITICAL
+BRIDGE_STATUS: failed
+DATA_TYPE: unknown
+RESTARTS: 3
+VISUAL_CHECK: fail
+
+DETAILS:
+- Bridge API: Connection refused after 3 restart attempts
+- Static server (8889): Responding
+- Lively Wallpaper: Running but no data source
+
+ACTIONS_TAKEN:
+- Attempted 3 bridge restarts (all failed)
+- Unable to recover automatically
+
+🚨 CRITICAL: Wallpaper bridge failed after 3 restart attempts. Manual intervention required:
+1. Check Neo4j containers are running: docker ps
+2. Check port 8080 not blocked by firewall
+3. Check bridge_server.py for errors
+4. Try manual restart: python bridge_server.py
+```
+
+## Constraints
+
+- Max runtime: 5 minutes
+- Max restarts per run: 3
+- Max restarts per hour: 5 (prevent restart loops)
+- Do NOT restart Lively Wallpaper app (only the bridge)
+- Do NOT modify wallpaper files
+- Log all restart attempts
+
+## Error Handling
+
+**Browser MCP unavailable:**
+- Skip visual check
+- Rely on API checks only
+- Warn that visual validation skipped
+
+**Bridge restart permission denied:**
+- Log error
+- Alert human
+- Do not retry (safety)
+
+**Port conflicts:**
+- If port 8080 in use, report as CRITICAL
+- Human must resolve manually
+
+## Success Criteria
+
+- Bridge responding with >10 nodes
+- Visual check finds real data indicators
+- No mock data labels visible
+- Status updated in agents-status.json

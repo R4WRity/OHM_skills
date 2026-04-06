@@ -1,0 +1,7 @@
+{
+  "name": "sigma-surgery",
+  "addr": "http://host.docker.internal:8000",
+  "proto": "http",
+  "inspect": true,
+  "subdomain": "sigma-surgery-dashboard"
+}

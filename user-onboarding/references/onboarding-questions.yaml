@@ -1,0 +1,407 @@
+# Onboarding Questions Catalog
+# 
+# Philosophy-infused, contemplative questions designed to provoke introspection.
+# Each onboarding randomly selects one variant per question, creating unique experiences.
+# Questions draw on Zen, Taoist, and contemplative traditions - mirrors, not surveys.
+#
+# Format:
+#   category: The MCP category/key where answers are stored
+#   questions: List of question variants (randomly selected per onboarding)
+#   storage_key: Where in the MCP server to store the answer
+#   type: How to store (personal_info, preference, memory, goal, relationship)
+
+# ==================== IDENTITY - The Self That Answers ====================
+
+- category: "identity"
+  storage_key: "name"
+  type: "personal_info"
+  questions:
+    - "Before we begin—you who are reading this. What name do you answer to? Not the one on documents, but the one that feels like yours when spoken aloud?"
+    - "Names are pointers, not the thing itself. What pointer shall I use for you?"
+    - "Who are you, in this moment? Call yourself whatever makes you feel recognized."
+
+- category: "identity"
+  storage_key: "age"
+  type: "personal_info"
+  questions:
+    - "Time is a curious fiction we agree upon. How many years have you been inhabiting this particular form?"
+    - "Since you began as yourself—or at least since you began remembering—how much time has accumulated?"
+    - "The body counts in years. How many has yours witnessed?"
+
+- category: "identity"
+  storage_key: "location"
+  type: "personal_info"
+  questions:
+    - "Where does gravity pull you when you're not in motion? Your ground—where is it?"
+    - "Roots, even shallow ones, need soil. Where are yours currently planted?"
+    - "If you were to be found tomorrow, where would someone look first?"
+
+- category: "identity"
+  storage_key: "occupation"
+  type: "personal_info"
+  questions:
+    - "What occupies your days—by necessity, by choice, or by the slow accumulation of habit?"
+    - "When you tell strangers what you 'do,' what words do you reach for?"
+    - "What is the shape of your contribution to this world, however you understand it?"
+
+# ==================== FOOD - Nourishment as Mirror ====================
+
+- category: "food"
+  storage_key: "cuisine_preferences"
+  type: "preference"
+  questions:
+    - "Food is medicine, memory, and ritual. What flavors have woven themselves into your cravings?"
+    - "If your tongue could choose tomorrow's meal without consulting your mind, what would it ask for?"
+    - "Some foods comfort the body, others the story we tell about ourselves. Which does what for you?"
+
+- category: "food"
+  storage_key: "dietary_restrictions"
+  type: "preference"
+  questions:
+    - "What has your body declared, in its wordless way, that it will not accept?"
+    - "Allergies, ethics, aversions—what boundaries have you discovered around what you consume?"
+    - "Is there anything your system has learned to say 'no' to?"
+
+- category: "food"
+  storage_key: "coffee_or_tea"
+  type: "preference"
+  questions:
+    - "Morning transformation: What liquid alchemy restores you to the realm of the awake?"
+    - "Bean, leaf, or something else entirely—what do you drink to summon consciousness?"
+    - "Your daily sacrament. What is it?"
+
+- category: "food"
+  storage_key: "favorite_restaurants"
+  type: "memory"
+  questions:
+    - "Where do you go when you want to be somewhere else but still yourself?"
+    - "A place where the outside world quiets enough for you to remember you're hungry. Where is it?"
+    - "Food prepared by hands not your own. Where do you trust them?"
+
+# ==================== ENTERTAINMENT - What Holds Your Attention ====================
+
+- category: "entertainment"
+  storage_key: "favorite_movies"
+  type: "memory"
+  questions:
+    - "What story have you returned to so many times it has become part of your internal landscape?"
+    - "A film that functions as a mirror for some part of you—what is it?"
+    - "If you had to inhabit one movie's world for a day, which would teach you something you haven't yet learned?"
+
+- category: "entertainment"
+  storage_key: "favorite_tv_shows"
+  type: "memory"
+  questions:
+    - "What world have you chosen to visit repeatedly, episode after episode, season after season?"
+    - "Long-form stories shape us differently. Which one has shaped you?"
+    - "What show do you keep returning to, not because you forget it, but because you remember?"
+
+- category: "entertainment"
+  storage_key: "favorite_music"
+  type: "preference"
+  questions:
+    - "Sound as the organizing principle of experience—what patterns currently move through you?"
+    - "Music as mood, as memory, as medicine. What is your current prescription?"
+    - "What has been living in your ears lately, and why do you let it stay?"
+
+- category: "entertainment"
+  storage_key: "favorite_games"
+  type: "memory"
+  questions:
+    - "Play is serious business. Where do you go when you want to be challenged, absorbed, transformed?"
+    - "What virtual world has earned the sacrifice of your most finite resource—time?"
+    - "Games teach us through repetition. What lessons have you been willing to learn over and over?"
+
+- category: "entertainment"
+  storage_key: "favorite_books"
+  type: "memory"
+  questions:
+    - "Words arranged just so, and suddenly something shifts. What book re-arranged you?"
+    - "A book that felt like it was written for you, specifically—at the time you read it, to be who you were becoming. What was it?"
+    - "What have you read that you find yourself still carrying, years later?"
+
+# ==================== PROFESSIONAL - Your Contribution ====================
+
+- category: "professional"
+  storage_key: "current_role"
+  type: "personal_info"
+  questions:
+    - "In the economy of attention and effort, what do you trade your hours for?"
+    - "Your days have a shape, even if you haven't named it. What form do they take?"
+    - "What do you do that others value enough to exchange something for?"
+
+- category: "professional"
+  storage_key: "skills"
+  type: "personal_info"
+  questions:
+    - "What have you practiced until it became invisible to you, effortless?"
+    - "Talent is what we notice; skill is what we build. What have you built?"
+    - "What do you know that you didn't always know—proven by repetition and refinement?"
+
+- category: "professional"
+  storage_key: "career_goals"
+  type: "goal"
+  questions:
+    - "What future self are you quietly constructing, one decision at a time?"
+    - "Ambition can be loud or whispered. What are you moving toward?"
+    - "In the story of your working life, what chapter are you hoping comes next?"
+
+- category: "professional"
+  storage_key: "learning_interests"
+  type: "goal"
+  questions:
+    - "We are always becoming. What is currently forming in you?"
+    - "What skill, knowledge, or understanding do you feel pulling at your attention?"
+    - "What have you admitted to yourself that you do not yet know—but intend to?"
+
+# ==================== TRAVEL - Movement as Meaning ====================
+
+- category: "travel"
+  storage_key: "favorite_destinations"
+  type: "memory"
+  questions:
+    - "Where have you been that the memory of it still teaches you something?"
+    - "Place as teacher: what location showed you something about yourself you hadn't seen before?"
+    - "If you close your eyes and summon 'elsewhere,' where appears?"
+
+- category: "travel"
+  storage_key: "travel_bucket_list"
+  type: "goal"
+  questions:
+    - "What place has earned its place in your imagination—a destination not yet arrived at?"
+    - "The map of what we want to see reveals the map of who we are. What calls to you from the atlas?"
+    - "What geography do you feel you must experience before the journey ends?"
+
+- category: "travel"
+  storage_key: "travel_style"
+  type: "preference"
+  questions:
+    - "When you leave home, do you seek comfort or disruption? Planning or improvisation?"
+    - "Travel as escape, as education, as challenge—what is it for you?"
+    - "On the road, are you tourist, pilgrim, wanderer, or something else entirely?"
+
+# ==================== LIFESTYLE - The Pattern of Days ====================
+
+- category: "lifestyle"
+  storage_key: "morning_routine"
+  type: "preference"
+  questions:
+    - "Each day begins whether we choose it or not. What do you do with that beginning?"
+    - "The threshold between sleep and waking—how do you cross it?"
+    - "What rituals prepare you for the hours ahead, whether consciously or not?"
+
+- category: "lifestyle"
+  storage_key: "hobbies"
+  type: "memory"
+  questions:
+    - "What do you do purely for its own sake, without external reward or recognition?"
+    - "Leisure reveals us. What do you choose when no one is watching?"
+    - "What activity restores you to yourself?"
+
+- category: "lifestyle"
+  storage_key: "exercise_preferences"
+  type: "preference"
+  questions:
+    - "The body asks to be used. How do you answer it?"
+    - "Movement as maintenance, as expression, as obligation—what is it for you?"
+    - "How do you relate to your physical form through action?"
+
+- category: "lifestyle"
+  storage_key: "sleep_preferences"
+  type: "preference"
+  questions:
+    - "When do you allow yourself to surrender to unconsciousness? And when do you return?"
+    - "Night and morning have their own personalities. Which do you inhabit more naturally?"
+    - "What is your relationship with rest—welcomed, resisted, or something negotiated?"
+
+# ==================== RELATIONSHIPS - The Web of Others ====================
+
+- category: "relationships"
+  storage_key: "family"
+  type: "relationship"
+  questions:
+    - "Who are the people you carry with you, whether physically present or not?"
+    - "Relationship as constellation—what patterns of connection sustain you?"
+    - "Who would you name if asked to account for those who have shaped who you are?"
+
+- category: "relationships"
+  storage_key: "pets"
+  type: "relationship"
+  questions:
+    - "Do you cohabitate with other species? What do they teach you about being alive?"
+    - "Non-human companions—do any share your space? And what do you call them?"
+    - "Is there a creature in your life that depends on you, or you on it?"
+
+- category: "relationships"
+  storage_key: "emergency_contacts"
+  type: "relationship"
+  questions:
+    - "If the world shifted suddenly, who would you reach for?"
+    - "Who has earned the right to be bothered in moments of genuine need?"
+    - "Who matters enough that their presence would matter in absence?"
+
+# ==================== GOALS & ASPIRATIONS - The Direction of Intention ====================
+
+- category: "goals"
+  storage_key: "short_term_goals"
+  type: "goal"
+  questions:
+    - "What have you set before yourself to be done, before the next turning of seasons?"
+    - "The near future as intention—what are you aiming at?"
+    - "What would constitute progress, to you, in the time just ahead?"
+
+- category: "goals"
+  storage_key: "long_term_goals"
+  type: "goal"
+  questions:
+    - "What future are you slowly building, even when you're not paying attention?"
+    - "The self you are becoming—do you have some sense of where it leads?"
+    - "What would it look like to arrive? However you understand that word?"
+
+- category: "goals"
+  storage_key: "current_projects"
+  type: "goal"
+  questions:
+    - "What is currently occupying that space between idea and completion?"
+    - "What have you begun that still asks for your attention?"
+    - "The work-in-process—what is it you keep meaning to return to?"
+
+# ==================== PREFERENCES & QUIRKS - The Pattern of You ====================
+
+- category: "preferences"
+  storage_key: "communication_style"
+  type: "preference"
+  questions:
+    - "How do you prefer meaning to travel between minds—directly, circuitously, silently, aloud?"
+    - "In the economy of words, are you extravagant or careful? And in what medium?"
+    - "How do you want to be reached—and how do you tend to reach back?"
+
+- category: "preferences"
+  storage_key: "productivity_style"
+  type: "preference"
+  questions:
+    - "What conditions allow you to become the person who accomplishes what you intend?"
+    - "Structure or spontaneity—how does the work of living actually get done through you?"
+    - "When you're effective, what is happening around you and within you?"
+
+- category: "preferences"
+  storage_key: "decision_making"
+  type: "preference"
+  questions:
+    - "When faced with choice, where do you look for guidance—body, mind, others, silence?"
+    - "The crossroads: how do you know which way to step?"
+    - "What do you trust when you have to choose?"
+
+- category: "quirks"
+  storage_key: "pet_peeves"
+  type: "memory"
+  questions:
+    - "What small friction accumulates into genuine irritation—for reasons perhaps you don't fully understand?"
+    - "What patterns in the world reliably disturb your peace?"
+    - "Is there something that shouldn't matter but somehow does?"
+
+- category: "quirks"
+  storage_key: "happy_triggers"
+  type: "memory"
+  questions:
+    - "What reliably returns you to a state you would call 'enough,' 'content,' or 'joy'?"
+    - "Small things, unexpected—they lift you. What are they?"
+    - "What should someone know about you that would help them help you remember happiness?"
+
+# ==================== TECH & TOOLS - Extension of Self ====================
+
+- category: "tech"
+  storage_key: "devices"
+  type: "personal_info"
+  questions:
+    - "What objects extend your reach into the digital world? What collection of tools do you carry?"
+    - "The hardware of your daily life—what shapes has it taken?"
+    - "Through what interfaces do you most often touch the network?"
+
+- category: "tech"
+  storage_key: "favorite_apps"
+  type: "preference"
+  questions:
+    - "What software has become so woven into your routine that its absence would require adjustment?"
+    - "Digital rituals: what do you open, scroll, tap without thinking?"
+    - "Which interfaces do you return to most faithfully?"
+
+- category: "tech"
+  storage_key: "workflow_tools"
+  type: "preference"
+  questions:
+    - "What systems have you assembled—or fallen into—that enable your productive self?"
+    - "The architecture of your digital organization: what holds it up?"
+    - "How do you keep track of what matters—deliberately or by default?"
+
+# ==================== BOT INTERACTION PREFERENCES ====================
+# NOTE: These questions configure how the bot should interact with this specific user
+# Answers go to USER.md under "Bot Interaction Preferences" section
+
+- category: "bot_interaction"
+  storage_key: "communication_directness"
+  type: "preference"
+  questions:
+    - "When we work together, do you want me to get straight to the point, or walk through my reasoning?"
+    - "In our exchanges, should I be brief and direct, or take time to explain my thinking?"
+    - "How do you like information delivered—raw and immediate, or with context included?"
+
+- category: "bot_interaction"
+  storage_key: "format_preference"
+  type: "preference"
+  questions:
+    - "When I have multiple things to tell you, do you prefer bullet points or flowing paragraphs?"
+    - "Information architecture: lists or prose?"
+    - "How do you like complex information organized—broken into pieces or woven together?"
+
+- category: "bot_interaction"
+  storage_key: "tone"
+  type: "preference"
+  questions:
+    - "What kind of presence do you want from me—professional, casual, warm, witty, or neutral?"
+    - "How should I show up in our conversations?"
+    - "If I were a person sitting next to you, what would my energy be?"
+
+- category: "bot_interaction"
+  storage_key: "opinions"
+  type: "preference"
+  questions:
+    - "Should I offer my perspective when I have one, or stay neutral and just follow your lead?"
+    - "Is it helpful if I share what I think, or do you prefer I just execute?"
+    - "When I see something you might have missed, should I mention it?"
+
+- category: "bot_interaction"
+  storage_key: "proactivity"
+  type: "preference"
+  questions:
+    - "How often should I initiate contact? Only when you speak to me, or when I notice something relevant?"
+    - "Do you want me to check in proactively, or only respond when you reach out?"
+    - "What's your preference for my presence—quietly available or actively engaged?"
+
+- category: "bot_interaction"
+  storage_key: "suggestions"
+  type: "preference"
+  questions:
+    - "If I think of something that might help, should I share it or wait for you to ask?"
+    - "When I have an idea that could be useful, what should I do with it?"
+
+- category: "bot_interaction"
+  storage_key: "triggers"
+  type: "preference"
+  questions:
+    - "What should prompt me to reach out? Calendar events, deadlines, or only emergencies?"
+    - "What signals should I watch for to be helpful without being intrusive?"
+
+- category: "bot_interaction"
+  storage_key: "confirm_external"
+  type: "preference"
+  questions:
+    - "Before I send messages or take actions that leave this system, should I ask first?"
+    - "How much autonomy should I have for external actions—always confirm, or trust my judgment?"
+
+- category: "bot_interaction"
+  storage_key: "concerning_data"
+  type: "preference"
+  questions:
+    - "If I notice something wrong in your data, should I tell you immediately or note it quietly?"
+    - "When I spot something concerning, how should I handle it?"

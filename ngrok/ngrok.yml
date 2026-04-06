@@ -1,0 +1,9 @@
+version: 2
+region: us
+log_level: info
+log_format: json
+web_addr: 0.0.0.0:4040
+
+# Tunnels are defined dynamically via API
+# This file contains agent-level configuration only
+# Authtoken is passed via NGROK_AUTHTOKEN env variable

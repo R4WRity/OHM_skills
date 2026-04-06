@@ -1,0 +1,169 @@
+# Leveling System Configuration
+# Knowledge Graph Progression for Simple Graph MCP
+# Version: 1.0
+# Last Updated: 2026-02-18
+
+leveling_system:
+  version: "1.0"
+  description: "Progression system based on knowledge graph growth"
+  
+  # --- SCORING FORMULA ---
+  # Total Score = (Σ node_types * type_weights) + (relationships * relationship_weight)
+  # Level determined by threshold table below
+  
+  scoring:
+    relationship_weight: 0.75  # 1 relationship = 0.75 points
+    
+    # Node type multipliers (prevents gaming with low-value nodes)
+    node_type_weights:
+      Person: 2.0        # High value: people, relationships
+      Memory: 1.5        # High value: experiences, stories
+      Project: 1.5       # High value: active work
+      Goal: 1.3          # Medium-high: aspirations
+      Skill: 1.2         # Medium: capabilities
+      Pattern: 1.2       # Medium: reusable knowledge
+      Tool: 1.0          # Base: utilities
+      Convention: 1.0    # Base: standards
+      Entity: 0.8        # Slightly reduced: generic entities
+      Test: 0.1          # Minimal: test/debug data (prevents spam)
+  
+  # --- LEVEL THRESHOLDS ---
+  # 20 levels, exponential curve
+  # Formula approx: threshold = 3 * (level ^ 1.8)
+  # Level 1 = 0 (starting point)
+  # Level 20 = 500 (mastery)
+  
+  thresholds:
+    - level: 1
+      min_score: 0
+      title: "Seeker"
+      description: "Beginning the journey of knowledge"
+      
+    - level: 2
+      min_score: 5
+      title: "Gatherer"
+      description: "Collecting first fragments of insight"
+      
+    - level: 3
+      min_score: 12
+      title: "Collector"
+      description: "Building a foundation of understanding"
+      
+    - level: 4
+      min_score: 22
+      title: "Organizer"
+      description: "Structuring scattered information"
+      
+    - level: 5
+      min_score: 36
+      title: "Linker"
+      description: "Connecting ideas into patterns"
+      
+    - level: 6
+      min_score: 55
+      title: "Connector"
+      description: "Weaving relationships between concepts"
+      
+    - level: 7
+      min_score: 80
+      title: "Synthesizer"
+      description: "Combining knowledge into new forms"
+      
+    - level: 8
+      min_score: 112
+      title: "Architect"
+      description: "Designing structures of understanding"
+      
+    - level: 9
+      min_score: 152
+      title: "Builder"
+      description: "Constructing lasting knowledge"
+      
+    - level: 10
+      min_score: 200
+      title: "Keeper"
+      description: "Guardian of accumulated wisdom"
+      badge: "🛡️"
+      
+    - level: 11
+      min_score: 258
+      title: "Curator"
+      description: "Selecting and preserving what matters"
+      
+    - level: 12
+      min_score: 326
+      title: "Steward"
+      description: "Tending to growing knowledge gardens"
+      
+    - level: 13
+      min_score: 405
+      title: "Guardian"
+      description: "Protector of interconnected truths"
+      
+    - level: 14
+      min_score: 496
+      title: "Sage"
+      description: "Deep well of curated understanding"
+      
+    - level: 15
+      min_score: 600
+      title: "Mentor"
+      description: "Knowledge worthy of sharing"
+      badge: "⭐"
+      
+    - level: 16
+      min_score: 718
+      title: "Luminary"
+      description: "Illuminating paths for others"
+      
+    - level: 17
+      min_score: 851
+      title: "Oracle"
+      description: "Wisdom drawn from vast networks"
+      
+    - level: 18
+      min_score: 1000
+      title: "Cartographer"
+      description: "Mapper of uncharted knowledge territories"
+      badge: "🗺️"
+      
+    - level: 19
+      min_score: 1166
+      title: "Philosopher"
+      description: "Contemplating the nature of knowing"
+      
+    - level: 20
+      min_score: 1350
+      title: "Sovereign"
+      description: "Mastery over personal knowledge domain"
+      badge: "👑"
+      
+  # --- NOTIFICATION SETTINGS ---
+  notifications:
+    enabled: true
+    channels:
+      - discord_dm
+      - dataviz_badge  # Show level on graph wallpaper
+    
+    message_template: |
+      🎉 **Level Up!**
+      
+      You've reached **Level {level} — {title}**
+      
+      {description}
+      
+      Score: {score} points
+      ({nodes} nodes × weights + {relationships} relationships × {rel_weight})
+      
+      Next level: {next_threshold} points
+  
+  # --- RETROACTIVE CALCULATION ---
+  retroactive:
+    enabled: true
+    apply_on_adoption: true  # When system deployed, calculate all existing users
+    preserve_highest: true   # If recalc lower than current, keep current (no demotions)
+  
+  # --- RECALIBRATION ---
+  recalibration:
+    version_tracking: true  # Store leveling_version on Person entity
+    audit_log: true         # Log all level changes with timestamp and reason

@@ -1,0 +1,12 @@
+{
+  "name": "example-site",
+  "id": "ep_2T...",
+  "url": "https://example.ngrok.io",
+  "public_url": "https://example.ngrok.io",
+  "metadata": {
+    "name": "example-site",
+    "local_port": 3000,
+    "created_by": "ngrok-skill"
+  },
+  "created_at": "2026-02-14T00:00:00Z"
+}
