@@ -17,7 +17,8 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const SKILLS_ROOT = join(__dirname, '..');
+const SCRIPTS_ROOT = join(__dirname, '..');
+const SKILLS_ROOT = join(SCRIPTS_ROOT, '..');
 
 // Color codes
 const colors = {
@@ -211,7 +212,7 @@ try {
   
   // Stage files
   const skillName = skillFlag !== -1 ? args[skillFlag + 1] : null;
-  const paths = allFlag !== -1 ? 'all' : [`skills/${skillName}/`];
+  const paths = allFlag !== -1 ? 'all' : [`${skillName}/`];
   stageFiles(paths);
   
   // Format commit message
